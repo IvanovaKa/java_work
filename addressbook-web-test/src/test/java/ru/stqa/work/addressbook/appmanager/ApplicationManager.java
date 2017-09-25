@@ -11,6 +11,7 @@ public class ApplicationManager {
 
   FirefoxDriver wd;
 
+  private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
 
@@ -23,16 +24,13 @@ public class ApplicationManager {
     }
   }
 
-  public void stop() {
-    wd.quit();
-  }
-
   public void init() {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost:8080/addressbook/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
     login("admin", "secret");
   }
 
@@ -47,19 +45,19 @@ public class ApplicationManager {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  public void goToGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+  public void stop() {
+    wd.quit();
   }
-
-  public void goToAddNewPage() {
-    wd.findElement(By.linkText("add new")).click();
-  }
-
+  
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
 
   public ContactHelper getContactHelper() {
     return contactHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
