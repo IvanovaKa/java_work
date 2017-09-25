@@ -9,7 +9,10 @@ import ru.stqa.work.addressbook.model.ContactData;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+
   FirefoxDriver wd;
+
+  private GroupHelper groupHelper;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
     try {
@@ -28,6 +31,7 @@ public class ApplicationManager {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost:8080/addressbook/addressbook/group.php");
+    groupHelper = new GroupHelper(wd);
     login("admin", "secret");
   }
 
@@ -40,30 +44,6 @@ public class ApplicationManager {
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-  }
-
-  public void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
-  }
-
-  public void submitGroupCreation() {
-    wd.findElement(By.name("submit")).click();
-  }
-
-  public void fillGroupForm(String name, String header, String footer) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(name);
-    wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(header);
-    wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(footer);
-  }
-
-  public void initGroupCreation() {
-    wd.findElement(By.name("new")).click();
   }
 
   public void goToGroupPage() {
@@ -150,14 +130,6 @@ public class ApplicationManager {
     wd.findElement(By.linkText("add new")).click();
   }
 
-  public void deleteSelectedGroups() {
-      wd.findElement(By.name("delete")).click();
-  }
-
-  public void selectGroup() {
-      wd.findElement(By.name("selected[]")).click();
-  }
-
   public void deleteSelectedContact() {
       wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
   }
@@ -167,5 +139,9 @@ public class ApplicationManager {
       if (!wd.findElement(By.id("7")).isSelected()) {
           wd.findElement(By.id("7")).click();
       }
+  }
+
+  public GroupHelper getGroupHelper() {
+    return groupHelper;
   }
 }
