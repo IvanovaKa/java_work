@@ -4,12 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.work.addressbook.model.GroupData;
 
-public class GroupHelper {
+public class GroupHelper extends HelperBase {
   private FirefoxDriver wd;
 
   public GroupHelper(FirefoxDriver wd) {
-    this.wd = wd;
-  }
+    super(wd);  }
 
   public void returnToGroupPage() {
     click(By.linkText("group page"));
@@ -19,9 +18,9 @@ public class GroupHelper {
     click(By.name("submit"));
   }
 
-  private void click(By locator) {
+  /*private void click(By locator) {
     wd.findElement(locator).click();
-  }
+  }*/
 
   public void fillGroupForm(GroupData groupData) {
     type(By.name("group_name"), groupData.getName());
@@ -29,11 +28,11 @@ public class GroupHelper {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  private void type(By locator, String text) {
+  /*private void type(By locator, String text) {
     click(locator);
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
-  }
+  }*/
 
   public void initGroupCreation() {
     click(By.name("new"));
