@@ -68,13 +68,5 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
-  public void updateContactModification() {
-    click(By.linkText("update"));
-  }
-
-  /*public void changeContactname(String first_name) {
-    ContactData contactData;
-    type(By.name("First Name"), contactData.getFirst_name());
-  }*/
 }
 
