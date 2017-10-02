@@ -1,8 +1,11 @@
 package ru.stqa.work.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.work.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -15,7 +18,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirst_name());
     type(By.name("middlename"), contactData.getMiddle_name());
     type(By.name("lastname"), contactData.getLast_name());
@@ -43,6 +46,15 @@ public class ContactHelper extends HelperBase {
       click(By.xpath("//div[@id='content']/form/select[4]//option[6]"));
     }
     type(By.name("ayear"), contactData.getAnniversary_year());
+
+    // проверка того, что элемента быть не должно
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
+
+
     /*if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[4]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[5]//option[4]"));
     }*/
