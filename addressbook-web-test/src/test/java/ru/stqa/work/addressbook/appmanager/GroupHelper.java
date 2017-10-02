@@ -2,14 +2,14 @@ package ru.stqa.work.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.work.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
   //private FirefoxDriver wd;
 
   public GroupHelper(WebDriver wd) {
-    super(wd);  }
+    super(wd);
+  }
 
   public void returnToGroupPage() {
     click(By.linkText("group page"));
@@ -59,4 +59,14 @@ public class GroupHelper extends HelperBase {
     accept(By.name("ok"));
   }
 
+  public void createGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
