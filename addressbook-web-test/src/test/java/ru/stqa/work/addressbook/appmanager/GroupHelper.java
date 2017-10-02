@@ -59,4 +59,10 @@ public class GroupHelper extends HelperBase {
     accept(By.name("ok"));
   }
 
+  public void createGroup(GroupData group) {
+   initGroupCreation();
+   fillGroupForm(group);
+   submitGroupCreation();
+   returnToGroupPage();
+  }
 }
