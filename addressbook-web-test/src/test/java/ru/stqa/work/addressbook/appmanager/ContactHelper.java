@@ -103,4 +103,8 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
+
+  public int getContactCout() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
