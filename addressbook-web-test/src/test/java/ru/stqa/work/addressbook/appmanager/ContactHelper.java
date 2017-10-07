@@ -71,15 +71,21 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home"));
   }
 
-  public void selectContact() {
+  /*public void selectContact(int index) {
     if (!wd.findElement(By.name("selected[]")).isSelected()) {
       wd.findElement(By.name("selected[]")).click();
     }
-  }
+  }*/
+
+// выбираем последний элемент из списка
+public void selectContact(int index) {
+  wd.findElements(By.name("selected[]")).get(index).click();
+}
 
   public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
+
 
   public void addNewContactPage() {
     click(By.linkText("add new"));
