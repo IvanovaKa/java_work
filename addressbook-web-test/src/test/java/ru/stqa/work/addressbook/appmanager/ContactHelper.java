@@ -81,13 +81,15 @@ public class ContactHelper extends HelperBase {
     }
   }*/
 
-// выбираем последний элемент из списка
-public void selectContact(int index) {
-  wd.findElements(By.name("selected[]")).get(index).click();
-}
+  // выбираем последний элемент из списка для удаления
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+  }
 
-  public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+
+  // выбираем последний элемент из списка для модификации
+  public void initContactModification(int index) {
+    wd.findElements(By.xpath("//tr[@class='odd']/td[8]/a/img")).get(index).click();
   }
 
 
