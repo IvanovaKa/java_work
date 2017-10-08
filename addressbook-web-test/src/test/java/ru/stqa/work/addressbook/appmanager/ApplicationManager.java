@@ -36,7 +36,7 @@ public class ApplicationManager {
     }
 
     //можно убирать 60 - для быстрого прохождения теста, но если необходимо время на появление элемента - нужно будет вернуть
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost:8080/addressbook/addressbook/");
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
