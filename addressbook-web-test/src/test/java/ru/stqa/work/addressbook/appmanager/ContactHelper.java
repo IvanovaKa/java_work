@@ -89,7 +89,7 @@ public class ContactHelper extends HelperBase {
 
   // выбираем последний элемент из списка для модификации
   public void initContactModification(int index) {
-    wd.findElements(By.xpath("//tr[@class='odd']/td[8]/a/img")).get(index).click();
+    wd.findElements(By.cssSelector("img[alt=\"Edit\"")).get(index).click();
   }
 
 
