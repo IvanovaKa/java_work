@@ -1,7 +1,11 @@
 package ru.stqa.work.addressbook.model;
 
 public class ContactData {
-  private final String id;
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  private int id;
   private final String first_name;
   private final String middle_name;
   private final String last_name;
@@ -19,7 +23,7 @@ public class ContactData {
   private final String anniversary_year;
   private String group;
 
-  public String getId() {
+  public int getId() {
     return id;
   }
 
@@ -28,7 +32,7 @@ public class ContactData {
   private final String notes;
 
   public ContactData(String first_name, String middle_name, String last_name, String nickname, String title, String company, String address, String home_phone, String mobile_phone, String work_phone, String fax, String email, String homepage, String birthday_year, String anniversary_year, String group, String address2, String home_phone2, String notes) {
-    this.id = null;
+    this.id = 0;
     this.first_name = first_name;
     this.middle_name = middle_name;
     this.last_name = last_name;
@@ -50,7 +54,7 @@ public class ContactData {
     this.notes = notes;
   }
 
-  public ContactData(String id, String first_name, String middle_name, String last_name, String nickname, String title, String company, String address, String home_phone, String mobile_phone, String work_phone, String fax, String email, String homepage, String birthday_year, String anniversary_year, String group, String address2, String home_phone2, String notes) {
+  public ContactData(int id, String first_name, String middle_name, String last_name, String nickname, String title, String company, String address, String home_phone, String mobile_phone, String work_phone, String fax, String email, String homepage, String birthday_year, String anniversary_year, String group, String address2, String home_phone2, String notes) {
     this.id = id;
     this.first_name = first_name;
     this.middle_name = middle_name;
@@ -150,32 +154,32 @@ public class ContactData {
   }
 
   @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", first_name='" + first_name + '\'' +
+            ", last_name='" + last_name + '\'' +
+            '}';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
     ContactData that = (ContactData) o;
 
-    if (id != null ? !id.equals(that.id) : that.id != null) return false;
+    if (id != that.id) return false;
     if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
     return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
   }
 
   @Override
   public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
+    int result = id;
     result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
     result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", first_name='" + first_name + '\'' +
-            ", last_name='" + last_name + '\'' +
-            '}';
   }
 
 }
