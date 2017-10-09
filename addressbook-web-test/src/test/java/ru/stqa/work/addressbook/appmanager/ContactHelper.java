@@ -57,8 +57,6 @@ public class ContactHelper extends HelperBase {
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-
-
     /*if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[4]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[5]//option[4]"));
     }*/
@@ -124,9 +122,11 @@ public class ContactHelper extends HelperBase {
   List<ContactData> contacts = new ArrayList<ContactData>();
   List<WebElement> elements = wd.findElements(By.name("entry"));
   for (WebElement element : elements) {
+    String id = element.getAttribute("value");
     String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
     String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-    ContactData contact = new ContactData(firstName, null, lastName, null, null,
+
+    ContactData contact = new ContactData(id, firstName, null, lastName, null, null,
             null, null, null, null, null, null,
             null, null, null, null, null, null,
             null, null);
