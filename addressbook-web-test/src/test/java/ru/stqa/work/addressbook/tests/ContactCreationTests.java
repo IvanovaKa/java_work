@@ -15,7 +15,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getNavigationHelper().goToAddNewPage();
-    ContactData contact = new ContactData("Name2", "Middle Name",
+    ContactData contact = new ContactData("Name", "Middle Name",
             "Last Name", "Nickname", "Title", "Company", "Address",
             "1111111", "2222222", "3333333", "4444444",
             "email@email.com", "homepage", "1983", "1983",
@@ -24,8 +24,10 @@ public class ContactCreationTests extends TestBase {
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(contact);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
   }
 }
