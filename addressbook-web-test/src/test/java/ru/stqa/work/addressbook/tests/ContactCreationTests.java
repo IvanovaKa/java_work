@@ -11,6 +11,8 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
+  //(enabled = false)
+
   @Test
   public void testContactCreation() {
     List<ContactData> before = app.getContactHelper().getContactList();
