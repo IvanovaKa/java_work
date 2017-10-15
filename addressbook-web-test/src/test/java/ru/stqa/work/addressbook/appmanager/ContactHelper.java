@@ -99,7 +99,13 @@ public class ContactHelper extends HelperBase {
     addNewContactPage();
     fillContactForm(contact, creation);
     submitContactCreation();
+  }
 
+  public void modifyContact(int index, ContactData contact) {
+    initContactModification(index);
+    fillContactForm(contact, false);
+    submitContactCreation();
+    openContacts();
   }
 
   public void acceptDeletionContact() {
