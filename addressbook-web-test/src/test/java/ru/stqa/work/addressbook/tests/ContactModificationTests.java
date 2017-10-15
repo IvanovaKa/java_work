@@ -14,11 +14,11 @@ public class ContactModificationTests extends TestBase {
   public void ensurePreconditions() {
     app.contact().contactPage();
     if (app.contact().list().size() == 0){
-      app.contact().create(new ContactData("Name", "Middle Name",
-              "Last Name", "Nickname", "Title", "Company", "Address",
-              "1111111", "2222222", "3333333", "4444444",
-              "email@email.com", "homepage", "1983", "1983",
-              "group name","Address2", "5555555", "Notes"), true);
+      app.contact().create(new ContactData().withFirst_name("Name").withMiddle_name("Middle Name").withLast_name("Last Name").withNickname("Nickname")
+              .withTitle("Title").withCompany("Company").withAddress("Address").withHome_phone("1111111")
+              .withMobile_phone("2222222").withWork_phone("3333333").withFax("4444444").withEmail("email@email.com")
+              .withHomepage("homepage").withBirthday_year("1983").withAnniversary_year("1983").withGroup("group name")
+              .withAddress2("Address2").withHome_phone2("5555555").withNotes("Notes"), true);
     }
   }
 
@@ -26,11 +26,11 @@ public class ContactModificationTests extends TestBase {
   public void testContactModification() {
     List<ContactData> before = app.contact().list();
     int index = before.size()-1;
-    ContactData contact = new ContactData(before.get(index).getId(), "Name", "Middle Name",
-            "Last Name", "Nickname", "Title", "Company", "Address",
-            "1111111", "2222222", "3333333", "4444444",
-            "email@email.com", "homepage", "1983", "1983",
-            null,"Address2", "5555555", "Notes");
+    ContactData contact = new ContactData().withId(before.get(index).getId()).withFirst_name("Name").withMiddle_name("Middle Name").withLast_name("Last Name").withNickname("Nickname")
+            .withTitle("Title").withCompany("Company").withAddress("Address").withHome_phone("1111111")
+            .withMobile_phone("2222222").withWork_phone("3333333").withFax("4444444").withEmail("email@email.com")
+            .withHomepage("homepage").withBirthday_year("1983").withAnniversary_year("1983").withGroup("group name")
+            .withAddress2("Address2").withHome_phone2("5555555").withNotes("Notes");
     app.contact().modify(index, contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
