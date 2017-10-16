@@ -12,8 +12,19 @@ public class ContactData {
   private String home_phone;
   private String mobile_phone;
   private String work_phone;
+  private String allPhones;
   private String fax;
   private String email;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
   private String homepage;
   private String birthday_year;
   private String anniversary_year;

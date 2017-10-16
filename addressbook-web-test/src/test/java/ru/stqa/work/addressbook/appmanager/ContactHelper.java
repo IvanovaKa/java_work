@@ -173,11 +173,10 @@ public class ContactHelper extends HelperBase {
       String firstName = cells.get(1).getText();
       String lastName = cells.get(2).getText();
       String address = cells.get(3).getText();
-      String[] phones = cells.get(5).getText().split("\n");
+      String allPhones = cells.get(5).getText();
       String email = cells.get(4).getText();
       contactCache.add(new ContactData().withId(id).withFirst_name(firstName).withLast_name(lastName)
-              .withAddress(address).withHome_phone(phones[0]).withMobile_phone(phones[1]).withWork_phone(phones[2])
-              .withEmail(email).withHome_phone2(phones[3]));
+              .withAddress(address).withAllPhones(allPhones).withEmail(email));
     }
     return new Contacts(contactCache);
   }
