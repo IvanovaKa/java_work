@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.work.addressbook.model.GroupData;
 import ru.stqa.work.addressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends HelperBase {
   //private FirefoxDriver wd;
@@ -92,7 +90,7 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-  public int getGroupCout() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
