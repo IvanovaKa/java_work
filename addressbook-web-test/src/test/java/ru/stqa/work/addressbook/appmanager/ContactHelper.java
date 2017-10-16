@@ -75,8 +75,43 @@ public class ContactHelper extends HelperBase {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
-  public void initContactModificationById(int id) {
+  public ContactData infoFormEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
+    wd.navigate().back();
+    return  new ContactData().withId(contact.getId()).withFirst_name(firstname).withLast_name(lastname)
+            .withHome_phone(home).withMobile_phone(mobile).withWork_phone(work).withHome_phone2(phone2);
+  }
+
+  /*public void initContactModificationById(int id) {
     wd.findElement(By.cssSelector("img[alt=\"Edit\"")).click();
+  }*/
+
+  //Новый метод открыть страницу редактирования
+  public void initContactModificationById(int id) {
+    //для начала находим чекбокс
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    //находим родительский элемент относительно чекбокса
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    //беремполный список ячеек внутри строки
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    //выбираем по номеру нужную нам ячейку
+    cells.get(7).findElement(By.tagName("a")).click();
+
+    //Более короткие примеры для данного метода
+
+    //находим чекбокс (//input[@value = '%s'])> относительно чекбокса поднимаемся на 2 уровня вверх (/../../)> в этой строке ищем 8 ячейку (td[8]) и находим ссылку (/a)
+    //wd.findElement(By.xpath(String.format("//input[@value = '%s']/../../td[8]/a", id))).click();
+    //подхапрос, который находит строку, внутри которой есть чекбокс с заланным идентификатором
+    //wd.findElement(By.xpath(String.format("//tr[.//input[@value = '%s']]/td[8]/a", id))).click();
+    //поиск ссылки по идентификтору
+    //wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
   }
 
   public void addNewContactPage() {
@@ -128,13 +163,17 @@ public class ContactHelper extends HelperBase {
       return new Contacts(contactCache);
     }
     contactCache = new Contacts();
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements) {
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-      contactCache.add(new ContactData().withId(id).withFirst_name(firstName).withLast_name(lastName));
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String firstName = cells.get(1).getText();
+      String lastName = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
+      contactCache.add(new ContactData().withId(id).withFirst_name(firstName).withLast_name(lastName)
+              .withHome_phone(phones[0]).withMobile_phone(phones[1]).withWork_phone(phones[2]).withHome_phone2(phones[3]));
     }
     return new Contacts(contactCache);
   }
+
 }
