@@ -32,10 +32,12 @@ public class ContactPhoneTests extends TestBase{
     ContactData contact  = app.contact().all().iterator().next();
     ContactData contactInfoFormEditForm = app.contact().infoFormEditForm(contact);
 
+    assertThat(contact.getAddress(), equalTo(contactInfoFormEditForm.getAddress()));
     assertThat(contact.getHome_phone(), equalTo(cleaned(contactInfoFormEditForm.getHome_phone())));
     assertThat(contact.getMobile_phone(), equalTo(cleaned(contactInfoFormEditForm.getMobile_phone())));
     assertThat(contact.getWork_phone(), equalTo(cleaned(contactInfoFormEditForm.getWork_phone())));
     assertThat(contact.getHome_phone2(), equalTo(cleaned(contactInfoFormEditForm.getHome_phone2())));
+    assertThat(contact.getEmail(), equalTo(contactInfoFormEditForm.getEmail()));
   }
 
   public String cleaned(String phone) {
