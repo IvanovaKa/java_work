@@ -15,6 +15,25 @@ public class ContactData {
   private String allPhones;
   private String fax;
   private String email;
+  private String email2;
+  private String email3;
+  private String allEmails;
+  private String homepage;
+  private String birthday_year;
+  private String anniversary_year;
+  private String group;
+  private String address2;
+  private String home_phone2;
+  private String notes;
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
 
   public String getAllPhones() {
     return allPhones;
@@ -25,13 +44,6 @@ public class ContactData {
     return this;
   }
 
-  private String homepage;
-  private String birthday_year;
-  private String anniversary_year;
-  private String group;
-  private String address2;
-  private String home_phone2;
-  private String notes;
 
   /*
   public ContactData(String first_name, String middle_name, String last_name, String nickname, String title, String company, String address, String home_phone, String mobile_phone, String work_phone, String fax, String email, String homepage, String birthday_year, String anniversary_year, String group, String address2, String home_phone2, String notes) {
@@ -145,6 +157,16 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
   public ContactData withHomepage(String homepage) {
     this.homepage = homepage;
     return this;
@@ -230,6 +252,13 @@ public class ContactData {
 
   public String getEmail() {
     return email;
+  }
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
   }
 
   public String getHomepage() {

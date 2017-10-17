@@ -23,8 +23,9 @@ public class ContactPhoneTests extends TestBase{
       app.contact().create(new ContactData().withFirst_name("Name").withMiddle_name("Middle Name").withLast_name("Last Name")
               .withNickname("Nickname").withTitle("Title").withCompany("Company").withAddress("Address")
               .withHome_phone("1111111").withMobile_phone("2222222").withWork_phone("3333333").withFax("4444444")
-              .withEmail("email@email.com").withHomepage("homepage").withBirthday_year("1983").withAnniversary_year("1983")
-              .withGroup("group name").withAddress2("Address2").withHome_phone2("5555555").withNotes("Notes"), true);
+              .withEmail("email@email.com").withEmail2("email1@email.com").withEmail3("email2@email.com")
+              .withHomepage("homepage").withBirthday_year("1983").withAnniversary_year("1983").withGroup("group name")
+              .withAddress2("Address2").withHome_phone2("5555555").withNotes("Notes"), true);
     }
   }
 
@@ -37,13 +38,20 @@ public class ContactPhoneTests extends TestBase{
 
     assertThat(contact.getAddress(), equalTo(contactInfoFormEditForm.getAddress()));
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFormEditForm)));
-    assertThat(contact.getEmail(), equalTo(contactInfoFormEditForm.getEmail()));
+    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFormEditForm)));
   }
 
   private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHome_phone(), contact.getMobile_phone(), contact.getWork_phone(), contact.getHome_phone2())
+    return Arrays.asList(contact.getHome_phone(), contact.getMobile_phone(), contact.getWork_phone(),
+            contact.getHome_phone2())
             .stream().filter((s) -> ! s.equals(""))
             .map(ContactPhoneTests::cleaned)
+            .collect(Collectors.joining("\n"));
+  }
+
+  private String mergeEmails(ContactData contact) {
+    return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+            .stream().filter((s) -> ! s.equals(""))
             .collect(Collectors.joining("\n"));
   }
 
