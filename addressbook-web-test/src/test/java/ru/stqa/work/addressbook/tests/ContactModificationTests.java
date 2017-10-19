@@ -31,7 +31,8 @@ public class ContactModificationTests extends TestBase {
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirst_name("Name").withMiddle_name("Middle Name").withLast_name("Last Name").withNickname("Nickname")
             .withTitle("Title").withCompany("Company").withAddress("Address").withHome_phone("1111111")
             .withMobile_phone("2222222").withWork_phone("3333333").withFax("4444444").withEmail("email@email.com")
-            .withHomepage("homepage").withBirthday_year("1983").withAnniversary_year("1983").withGroup("group name")
+            .withEmail2("email1@email.com").withEmail3("email2@email.com").withHomepage("homepage")
+            .withBirthday_year("1983").withAnniversary_year("1983").withGroup("group name")
             .withAddress2("Address2").withHome_phone2("5555555").withNotes("Notes");
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
