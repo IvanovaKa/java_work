@@ -6,7 +6,10 @@ import org.testng.annotations.Test;
 import ru.stqa.work.addressbook.model.ContactData;
 import ru.stqa.work.addressbook.model.Contacts;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,9 +22,21 @@ public class ContactCreationTests extends TestBase {
   //(enabled = false)
 
   @DataProvider
-  public Iterator<Object[]> validContacts() {
+  public Iterator<Object[]> validContacts() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
     File photo = new File("src/test/resources/image.png");
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+    String line = reader.readLine();
+    while (line != null) {
+      String[] split = line.split(";");
+      list.add(new Object[]{new ContactData().withFirst_name(split[0]).withMiddle_name(split[1])
+              .withLast_name(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5])
+              .withAddress(split[6]).withHome_phone(split[7]).withMobile_phone(split[8]).withWork_phone(split[9])
+              .withFax(split[10]).withEmail(split[11]).withHomepage(split[12]).withBirthday_year(split[13])
+              .withAnniversary_year(split[14]).withGroup(split[15]).withAddress2(split[16]).withNotes(split[17])});
+      line = reader.readLine();
+    }
+    /*
     list.add(new Object[]{new ContactData().withFirst_name("name1").withMiddle_name("middle_name1")
             .withLast_name("surname1").withNickname("nickname1").withPhoto(photo).withTitle("title1").withCompany("company1")
             .withAddress("address1").withHome_phone("111111").withMobile_phone("222221").withWork_phone("333331")
@@ -43,6 +58,7 @@ public class ContactCreationTests extends TestBase {
             .withEmail3("email3@email3.com").withHomepage("home_page3").withBirthday_year("1985")
             .withAnniversary_year("1985").withGroup("group name").withAddress2("address2_3").withHome_phone2("555553")
             .withNotes("notes3")});
+            */
     return list.iterator();
   }
 
@@ -53,29 +69,12 @@ public class ContactCreationTests extends TestBase {
     Contacts before = app.contact().all();
     app.goTo().addNewPage();
     /*File photo = new File("src/test/resources/image.png");*/
-    /*ContactData contact = new ContactData()
-            .withFirst_name(name).withMiddle_name(middle_name).withLast_name(surname).withNickname(nickname)
-            .withPhoto(photo).withTitle(title).withCompany(company).withAddress(address).withHome_phone(home_phone)
-            .withMobile_phone(mobile).withWork_phone(work_phone).withFax(fax).withEmail(email)
-            .withEmail2(email2).withEmail3(email3).withHomepage(home_page)
-            .withBirthday_year(birthday).withAnniversary_year(anniversary).withGroup(group)
-            .withAddress2(address2).withHome_phone2(home_phone2).withNotes(notes);*/
     app.contact().create(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     /*Contacts after = app.contact().all();
     assertThat(after, equalTo
             (before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));*/
   }
-/*
-  @Test
-  public void testCurrentDir() {
-    File currentDir = new File(".");
-    System.out.println(currentDir.getAbsolutePath());
-    File photo = new File("src/test/resources/image.png");
-    System.out.println(photo.getAbsolutePath());
-    System.out.println(photo.exists());
-  }
-*/
 
   @Test
   public void testBadContactCreation() {
