@@ -1,0 +1,59 @@
+<list>
+  <contact>
+    <first__name>Name 0</first__name>
+    <middle__name>Middle 0</middle__name>
+    <last__name>Surname 0</last__name>
+    <nickname>Nickname 0</nickname>
+    <title>Title 0</title>
+    <company>Company 0</company>
+    <address>Address 0</address>
+    <home__phone>1111 0</home__phone>
+    <mobile__phone>2222 0</mobile__phone>
+    <work__phone>3333 0</work__phone>
+    <fax>4444 0</fax>
+    <email>email 0</email>
+    <homepage>homepage 0</homepage>
+    <birthday__year>1983 0</birthday__year>
+    <anniversary__year>1983 0</anniversary__year>
+    <group>group 0</group>
+    <notes>Notes 0</notes>
+  </contact>
+  <contact>
+    <first__name>Name 1</first__name>
+    <middle__name>Middle 1</middle__name>
+    <last__name>Surname 1</last__name>
+    <nickname>Nickname 1</nickname>
+    <title>Title 1</title>
+    <company>Company 1</company>
+    <address>Address 1</address>
+    <home__phone>1111 1</home__phone>
+    <mobile__phone>2222 1</mobile__phone>
+    <work__phone>3333 1</work__phone>
+    <fax>4444 1</fax>
+    <email>email 1</email>
+    <homepage>homepage 1</homepage>
+    <birthday__year>1983 1</birthday__year>
+    <anniversary__year>1983 1</anniversary__year>
+    <group>group 1</group>
+    <notes>Notes 1</notes>
+  </contact>
+  <contact>
+    <first__name>Name 2</first__name>
+    <middle__name>Middle 2</middle__name>
+    <last__name>Surname 2</last__name>
+    <nickname>Nickname 2</nickname>
+    <title>Title 2</title>
+    <company>Company 2</company>
+    <address>Address 2</address>
+    <home__phone>1111 2</home__phone>
+    <mobile__phone>2222 2</mobile__phone>
+    <work__phone>3333 2</work__phone>
+    <fax>4444 2</fax>
+    <email>email 2</email>
+    <homepage>homepage 2</homepage>
+    <birthday__year>1983 2</birthday__year>
+    <anniversary__year>1983 2</anniversary__year>
+    <group>group 2</group>
+    <notes>Notes 2</notes>
+  </contact>
+</list>
