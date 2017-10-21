@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.work.addressbook.tests.GroupCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-21T16:00:37" hostname="eivanova-ws" time="26.242">
+  <properties/>
+  <testcase name="testGroupCreation[0](GroupData{id=2147483647, name='group 0'})" classname="ru.stqa.work.addressbook.tests.GroupCreationTests" time="11.851"/>
+  <testcase name="testGroupCreation[1](GroupData{id=2147483647, name='group 1'})" classname="ru.stqa.work.addressbook.tests.GroupCreationTests" time="7.149"/>
+  <testcase name="testGroupCreation[2](GroupData{id=2147483647, name='group 2'})" classname="ru.stqa.work.addressbook.tests.GroupCreationTests" time="7.242"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.work.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-21T16:11:24" hostname="eivanova-ws" time="6.046">
+  <properties/>
+  <testcase name="testGroupDeletion" classname="ru.stqa.work.addressbook.tests.GroupDeletionTests" time="6.046"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
