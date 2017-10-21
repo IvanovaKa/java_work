@@ -30,23 +30,24 @@ public class ContactCreationTests extends TestBase {
   public Iterator<Object[]> validContactsFromXml() throws IOException {
     /*List<Object[]> list = new ArrayList<Object[]>();*/
     File photo = new File("src/test/resources/image.png");
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
-    String xml = "";
-    String line = reader.readLine();
-    while (line != null) {
-      xml += line;
+    try (BufferedReader reader = new BufferedReader(new FileReader(
+            new File("src/test/resources/contacts.xml")))){
+      String xml = "";
+      String line = reader.readLine();
+      while (line != null) {
+        xml += line;
       /*String[] split = line.split(";");
       list.add(new Object[]{new ContactData().withFirst_name(split[0]).withMiddle_name(split[1])
               .withLast_name(split[2]).withNickname(split[3]).withTitle(split[4]).withCompany(split[5])
               .withAddress(split[6]).withHome_phone(split[7]).withMobile_phone(split[8]).withWork_phone(split[9])
               .withFax(split[10]).withEmail(split[11]).withHomepage(split[12]).withBirthday_year(split[13])
               .withAnniversary_year(split[14]).withGroup(split[15]).withAddress2(split[16]).withNotes(split[17])});*/
-      line = reader.readLine();
-    }
-    XStream xStream = new XStream();
-    xStream.processAnnotations(ContactData.class);
-    List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
-    return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
+        line = reader.readLine();
+      }
+      XStream xStream = new XStream();
+      xStream.processAnnotations(ContactData.class);
+      List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
+      return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
     /*
     list.add(new Object[]{new ContactData().withFirst_name("name1").withMiddle_name("middle_name1")
             .withLast_name("surname1").withNickname("nickname1").withPhoto(photo).withTitle("title1").withCompany("company1")
@@ -70,21 +71,24 @@ public class ContactCreationTests extends TestBase {
             .withAnniversary_year("1985").withGroup("group name").withAddress2("address2_3").withHome_phone2("555553")
             .withNotes("notes3")});
             */
+    }
   }
 
   @DataProvider
   public Iterator<Object[]> validContactsFromJson() throws IOException {
     File photo = new File("src/test/resources/image.png");
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
-    String json = "";
-    String line = reader.readLine();
-    while (line != null) {
-      json += line;
-      line = reader.readLine();
+    try (BufferedReader reader = new BufferedReader(new FileReader(
+            new File("src/test/resources/contacts.json")))){
+      String json = "";
+      String line = reader.readLine();
+      while (line != null) {
+        json += line;
+        line = reader.readLine();
+      }
+      Gson gson = new Gson();
+      List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); //List<ContactData>.class
+      return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
     }
-    Gson gson = new Gson();
-    List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); //List<ContactData>.class
-    return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
   }
 
   @Test(dataProvider = "validContactsFromJson")
