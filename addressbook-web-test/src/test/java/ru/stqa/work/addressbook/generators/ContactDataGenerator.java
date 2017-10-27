@@ -80,7 +80,7 @@ public class ContactDataGenerator {
                         contact.getAddress(), contact.getHome_phone(), contact.getMobile_phone(),
                         contact.getWork_phone(), contact.getFax(), contact.getEmail(),
                         contact.getHomepage(), contact.getBirthday_year(), contact.getAnniversary_year(),
-                        contact.getGroup(), contact.getAddress(), contact.getNotes()));
+                        /*contact.getGroup(),*/ contact.getAddress(), contact.getNotes()));
       }
     }
   }
@@ -96,7 +96,7 @@ public class ContactDataGenerator {
               .withWork_phone(String.format("3333 %s", i)).withFax(String.format("4444 %s", i))
               .withEmail(String.format("email %s", i)).withHomepage(String.format("homepage %s", i))
               .withBirthday_year(String.format("1983 %s", i)).withAnniversary_year(String.format("1983 %s", i))
-              .withGroup(String.format("group %s", i)).withAddress(String.format("Address %s", i))
+              /*.withGroup(String.format("group %s", i))*/.withAddress(String.format("Address %s", i))
               .withNotes(String.format("Notes %s", i)));
     }
     return contacts;

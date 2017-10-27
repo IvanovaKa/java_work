@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.stqa.work.addressbook.tests.TestBase.app;
 
 public class ContactPhoneTests extends TestBase{
-
+/*
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -28,7 +28,7 @@ public class ContactPhoneTests extends TestBase{
               .withAddress2("Address2").withHome_phone2("5555555").withNotes("Notes"), true);
     }
   }
-
+*/
 
   @Test
   public void testContactPhones() {
