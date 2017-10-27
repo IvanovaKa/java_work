@@ -35,6 +35,7 @@ public class ContactData {
   private String nickname;
 
   @Expose
+
   @Column(name = "title")
   private String title;
 
