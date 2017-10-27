@@ -3,7 +3,6 @@ package ru.stqa.work.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.work.addressbook.model.ContactData;
 import ru.stqa.work.addressbook.model.Contacts;
@@ -22,7 +21,6 @@ public class ContactHelper extends HelperBase {
 
   public void submitUpdateCreation() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
-
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
@@ -59,13 +57,13 @@ public class ContactHelper extends HelperBase {
 
     // проверка того, что элемента быть не должно
     if (creation) {
-      if (contactData.getGroups().size() > 0){
-        Assert.assertTrue(contactData.getGroups().size() == 1);
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      //if (contactData.getGroups().size() > 0) {
+        //Assert.assertTrue(contactData.getGroups().size() == 1);
+      //  new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
       } else {
         Assert.assertFalse(isElementPresent(By.name("new_group")));
-      }
-      }
+     // }
+    }
 
     /*if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[4]")).isSelected()) {
       click(By.xpath("//div[@id='content']/form/select[5]//option[4]"));
@@ -100,7 +98,7 @@ public class ContactHelper extends HelperBase {
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
     wd.navigate().back();
-    return  new ContactData().withId(contact.getId()).withFirst_name(firstname).withLast_name(lastname)
+    return new ContactData().withId(contact.getId()).withFirst_name(firstname).withLast_name(lastname)
             .withAddress(address).withHome_phone(home).withMobile_phone(mobile).withWork_phone(work)
             .withEmail(email).withEmail2(email2).withEmail3(email3).withHome_phone2(phone2);
   }
@@ -157,6 +155,38 @@ public class ContactHelper extends HelperBase {
     acceptDeletionContact();
   }
 
+  public void addIntoGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    selectGroup();
+    additionToGroup();
+  }
+
+  public void removeFromGroup(ContactData contact) {
+    selectExistingGroup();
+    selectContactById(contact.getId());
+    removeContact();
+  }
+
+  public void selectAllGroups() {
+    click(By.xpath("//form[@id='right']/select//option[2]"));
+  }
+
+  private void removeContact() {
+    click(By.name("remove"));
+  }
+
+  private void selectExistingGroup() {
+    click(By.xpath("//form[@id='right']/select//option[3]"));
+  }
+
+  private void additionToGroup() {
+    click(By.name("add"));
+  }
+
+  private void selectGroup() {
+    click(By.xpath("//div[4]/select"));
+  }
+
   public void acceptDeletionContact() {
     wd.switchTo().alert().accept();
   }
@@ -194,5 +224,6 @@ public class ContactHelper extends HelperBase {
     }
     return new Contacts(contactCache);
   }
+
 
 }
