@@ -160,9 +160,9 @@ public class ContactHelper extends HelperBase {
     additionToGroup();
   }
 
-  public void removeFromGroup(ContactData contact) {
-    selectExistingGroup();
-    selectContactById(contact.getId());
+  public void removeFromGroup() {
+    //selectExistingGroup();
+    //selectContactById(contact.getId());
     removeContact();
   }
 
