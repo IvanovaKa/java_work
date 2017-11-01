@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.stqa.work.addressbook.model.ContactData;
 import ru.stqa.work.addressbook.model.Contacts;
 import ru.stqa.work.addressbook.model.GroupData;
+import ru.stqa.work.addressbook.model.Groups;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -34,13 +35,19 @@ public class AddContactIntoGroupTests extends TestBase{
 
   @Test
   public void testAddContactIntoGroup() {
-    Contacts before = app.contact().all();
+    Contacts contactListBefore = app.db().contacts();
+    Groups groupsListBefore = app.db().groups();
+    ContactData selectContact = contactListBefore.iterator().next();
+    Groups groupSelectedForContact = selectContact.getGroups();
+    GroupData selectGroup= groupsListBefore.iterator().next();
     app.contact().contactPage();
-    ContactData addContact = before.iterator().next();
-    app.contact().addIntoGroup(addContact);
-    Contacts after = app.db().contacts();
+    app.contact().selectContactById(selectContact.getId());
+    app.contact().addContactIntoGroup();
     app.contact().contactPage();
-    assertThat(app.contact().count(), equalTo(before.size()));
-    verifyContactListInUI();
+    app.contact().selectExistingGroup();
+    ContactData contactListAfter = app.db().contacts().iterator().next();
+    Groups groupsListAfter = contactListAfter.getGroups();
+    assertThat(groupsListAfter, equalTo(groupSelectedForContact.withAdded(selectGroup)));
+
   }
 }

@@ -20,7 +20,7 @@ public class RemoveContactFromGroupTests extends TestBase{
     } else {
       Contacts before = app.contact().all();
       ContactData addContact = before.iterator().next();
-      app.contact().addIntoGroup(addContact);
+      //app.contact().addContactIntoGroup(addContact);
     }
   }
 
@@ -36,7 +36,7 @@ public class RemoveContactFromGroupTests extends TestBase{
               .withHome_phone2("5555555").withNotes("Notes"), true);
       Contacts before = app.contact().all();
       ContactData addContact = before.iterator().next();
-      app.contact().addIntoGroup(addContact);
+      //app.contact().addContactIntoGroup(addContact);
     }
   }
 

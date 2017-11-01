@@ -38,7 +38,6 @@ public class ContactData {
   private String nickname;
 
   @Expose
-
   @Column(name = "title")
   private String title;
 
@@ -143,7 +142,6 @@ public class ContactData {
 
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
-
     return this;
   }
 
@@ -164,54 +162,6 @@ public class ContactData {
     this.allPhones = allPhones;
     return this;
   }
-
-
-  /*
-  public ContactData(String first_name, String middle_name, String last_name, String nickname, String title, String company, String address, String home_phone, String mobile_phone, String work_phone, String fax, String email, String homepage, String birthday_year, String anniversary_year, String group, String address2, String home_phone2, String notes) {
-    this.id = Integer.MAX_VALUE;
-    this.first_name = first_name;
-    this.middle_name = middle_name;
-    this.last_name = last_name;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.home_phone = home_phone;
-    this.mobile_phone = mobile_phone;
-    this.work_phone = work_phone;
-    this.fax = fax;
-    this.email = email;
-    this.homepage = homepage;
-    this.birthday_year = birthday_year;
-    this.anniversary_year = anniversary_year;
-    this.group = group;
-    this.address2 = address2;
-    this.home_phone2 = home_phone2;
-    this.notes = notes;
-  }
-
-  public ContactData(int id, String first_name, String middle_name, String last_name, String nickname, String title, String company, String address, String home_phone, String mobile_phone, String work_phone, String fax, String email, String homepage, String birthday_year, String anniversary_year, String group, String address2, String home_phone2, String notes) {
-    this.id = id;
-    this.first_name = first_name;
-    this.middle_name = middle_name;
-    this.last_name = last_name;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.home_phone = home_phone;
-    this.mobile_phone = mobile_phone;
-    this.work_phone = work_phone;
-    this.fax = fax;
-    this.email = email;
-    this.homepage = homepage;
-    this.birthday_year = birthday_year;
-    this.anniversary_year = anniversary_year;
-    this.group = group;
-    this.address2 = address2;
-    this.home_phone2 = home_phone2;
-    this.notes = notes;
-  }*/
 
   public ContactData withId(int id) {
     this.id = id;

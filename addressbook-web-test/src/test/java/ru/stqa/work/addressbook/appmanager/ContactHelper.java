@@ -155,8 +155,7 @@ public class ContactHelper extends HelperBase {
     acceptDeletionContact();
   }
 
-  public void addIntoGroup(ContactData contact) {
-    selectContactById(contact.getId());
+  public void addContactIntoGroup() {
     selectGroup();
     additionToGroup();
   }
@@ -171,11 +170,11 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//form[@id='right']/select//option[2]"));
   }
 
-  private void removeContact() {
+  public void removeContact() {
     click(By.name("remove"));
   }
 
-  private void selectExistingGroup() {
+  public void selectExistingGroup() {
     click(By.xpath("//form[@id='right']/select//option[3]"));
   }
 
