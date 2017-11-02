@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-//import sun.plugin2.util.BrowserType;
-
 public class ApplicationManager {
 
   private final Properties properties;
@@ -40,8 +38,7 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
 
-    //можно убирать 60 - для быстрого прохождения теста, но если необходимо время на появление элемента - нужно будет вернуть
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
   }
 
@@ -49,4 +46,11 @@ public class ApplicationManager {
     wd.quit();
   }
 
+  public HttpSession newSession() {
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
 }
