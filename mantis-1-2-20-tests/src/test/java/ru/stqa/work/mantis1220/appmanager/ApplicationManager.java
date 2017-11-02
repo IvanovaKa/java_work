@@ -1,4 +1,4 @@
-package ru.stqa.work.mantis.appmanager;
+package ru.stqa.work.mantis1220.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,6 +31,7 @@ public class ApplicationManager {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
+
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     } else if (browser.equals(BrowserType.CHROME)) {
@@ -42,13 +43,10 @@ public class ApplicationManager {
     //можно убирать 60 - для быстрого прохождения теста, но если необходимо время на появление элемента - нужно будет вернуть
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
-   }
+  }
 
   public void stop() {
     wd.quit();
   }
 
-  public  HttpSession newSession()  {
-    return  new HttpSession(this);
-  }
 }
