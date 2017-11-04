@@ -1,4 +1,5 @@
 package ru.stqa.work.mantis.appmanager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
 
   private final Properties properties;
-  private WebDriver wd;
+  WebDriver wd;
 
   private String browser;
   private RegistrationHelper registrationHelper;
@@ -28,7 +29,8 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-  }
+
+   }
 
   public void stop() {
     if (wd != null){
@@ -36,7 +38,7 @@ public class ApplicationManager {
     }
   }
 
-  public HttpSession newSession() {
+  public HttpSession newSession(){
     return new HttpSession(this);
   }
 
@@ -52,7 +54,7 @@ public class ApplicationManager {
   }
 
   public WebDriver getDriver() {
-    if(wd == null){
+    if (wd == null){
       if (browser.equals(BrowserType.FIREFOX)) {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
       } else if (browser.equals(BrowserType.CHROME)) {
@@ -60,6 +62,7 @@ public class ApplicationManager {
       } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
       }
+
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
     }
