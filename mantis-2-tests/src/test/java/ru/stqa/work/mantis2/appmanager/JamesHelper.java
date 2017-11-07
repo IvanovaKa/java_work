@@ -2,7 +2,6 @@ package ru.stqa.work.mantis2.appmanager;
 
 import org.apache.commons.net.telnet.TelnetClient;
 import ru.stqa.work.mantis2.model.MailMessage;
-
 import javax.mail.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,16 +34,16 @@ public class JamesHelper {
     return result.trim().equals("User " + name + " exist");
   }
 
-  public void createUser(String name, String password) {
+  public void createUser(String name, String passwd) {
     initTelnetSession();
-    write("adduser " + name + password);
+    write("adduser " + name + " " + passwd);
     String result = readUntil("User " + name + " added");
     closeTelnetSession();
   }
 
   public void deleteUser(String name) {
     initTelnetSession();
-    write("adduser " + name);
+    write("deluser " + name);
     String result = readUntil("User " + name + " deleted");
     closeTelnetSession();
   }
@@ -73,7 +72,7 @@ public class JamesHelper {
     readUntil("Password:");
     write(password);
     //Read welcome message
-    readUntil("Welcome " + login + ". HELP for a list commands");
+    readUntil("Welcome " + login + ". HELP for a list of commands");
   }
 
   private String readUntil(String pattern) {
@@ -97,15 +96,14 @@ public class JamesHelper {
     return null;
   }
 
-  private String write(String value) {
+  private void write(String value) {
     try {
       out.println(value);
       out.flush();
       System.out.println(value);
-    } catch (Exception e) {
+    } catch (Exception e){
       e.printStackTrace();
     }
-    return null;
   }
 
   private void closeTelnetSession() {
