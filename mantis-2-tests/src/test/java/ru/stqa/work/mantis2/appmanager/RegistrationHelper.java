@@ -13,6 +13,7 @@ public class RegistrationHelper extends HelperBase{
     type(By.name("username"), username);
     type(By.name("email"), email);
     click(By.cssSelector("[type='submit']"));
+    //click(By.xpath("//a[contains(@href, 'login_page.php')]"));
   }
 
   public void finish(String confirmationLink, String password) {
