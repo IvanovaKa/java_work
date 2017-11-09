@@ -14,13 +14,17 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
+  protected WebDriver wd;
   private final Properties properties;
-  private WebDriver wd;
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
+  private UserHelper userHelper;
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -31,6 +35,16 @@ public class ApplicationManager {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
   }
+/*
+  public void init() {
+    wd = new FirefoxDriver();
+    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.get("http://localhost:8080/mantisbt-2.8.0/login_page.php");
+    userHelper = new UserHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.login("administrator", "root");
+  }*/
 
   public void stop() {
     if (wd != null){
@@ -45,7 +59,6 @@ public class ApplicationManager {
   public String getProperty(String key) {
     return properties.getProperty(key);
   }
-
 
   public RegistrationHelper registration() {
     if (registrationHelper == null){
@@ -73,6 +86,8 @@ public class ApplicationManager {
 
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
+
+      dbHelper = new DbHelper();
     }
     return wd;
   }
@@ -89,5 +104,21 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
+  }
+
+  public UserHelper userHelper() {
+    return userHelper;
+  }
+
+  public SessionHelper getSessionHelper(){
+    return sessionHelper;
+  }
+
+  public NavigationHelper goTo() {
+    return navigationHelper;
+  }
+
+  public DbHelper db(){
+    return dbHelper;
   }
 }
