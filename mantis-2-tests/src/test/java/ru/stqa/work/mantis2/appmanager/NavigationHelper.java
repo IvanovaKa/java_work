@@ -8,11 +8,5 @@ public class NavigationHelper extends HelperBase{
     super(app);
   }
 
-  public void ManagementTab() {
-    wd.findElement(By.linkText("управление")).click();
-  }
 
-  public void UsersPage() {
-    wd.findElement(By.linkText("Управление пользователями")).click();
-  }
 }
