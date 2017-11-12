@@ -10,12 +10,16 @@
       <module name="java_work-mantis-1-2-20-tests_main~1" target="1.8" />
       <module name="java_work-mantis-1-2-20-tests_test" target="1.8" />
       <module name="java_work-mantis-1-2-20-tests_test~1" target="1.8" />
+      <module name="java_work-rest-sample_test" target="1.8" />
+      <module name="java_work-soap-sample_test" target="1.8" />
       <module name="mantis-1-2-20-tests_main" target="1.8" />
       <module name="mantis-1-2-20-tests_test" target="1.8" />
       <module name="mantis-2-tests_main" target="1.8" />
       <module name="mantis-2-tests_test" target="1.8" />
       <module name="mantis-tests_main" target="1.8" />
       <module name="mantis-tests_test" target="1.8" />
+      <module name="rest-sample_main" target="1.8" />
+      <module name="rest-sample_test" target="1.8" />
       <module name="sandbox_main" target="1.8" />
       <module name="sandbox_test" target="1.8" />
       <module name="soap-sample_main" target="1.8" />
