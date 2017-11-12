@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import ru.stqa.work.mantis2.tests.TestBase;
 
 import java.io.File;
 import java.io.FileReader;
@@ -27,6 +26,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
   private DbHelper dbHelper;
+  private SoapHelper soapHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -117,5 +117,12 @@ public class ApplicationManager {
 
   public DbHelper db(){
     return dbHelper;
+  }
+
+  public SoapHelper soap(){
+    if (soapHelper == null){
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 }
