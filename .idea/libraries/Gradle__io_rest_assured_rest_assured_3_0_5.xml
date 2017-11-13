@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: io.rest-assured:rest-assured:3.0.5">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/rest-sample/Could not resolve io.rest-assured:rest-assured:3.0.5." />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured/3.0.5/e38cb80389121458bb7b3128e53d2781cbc7a5b6/rest-assured-3.0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
