@@ -52,11 +52,6 @@ public static final ApplicationManager app
     }
   }*/
 
-  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (isIssueOpen(issueId)) {
-      throw new SkipException("Ignored because of issue " + issueId);
-    }
-  }
 
   private boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
     String resolution = app.soap().getResolution(issueId);
@@ -64,6 +59,11 @@ public static final ApplicationManager app
       return true;
     } else {
       return false;
+    }
+  }
+  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+    if (isIssueOpen(issueId)) {
+      throw new SkipException("Ignored because of issue " + issueId);
     }
   }
 }
