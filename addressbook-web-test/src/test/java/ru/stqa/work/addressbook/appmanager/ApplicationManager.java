@@ -1,5 +1,6 @@
 package ru.stqa.work.addressbook.appmanager;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -52,9 +53,9 @@ public class ApplicationManager {
     } else {
       DesiredCapabilities capabilities = new DesiredCapabilities();
       capabilities.setBrowserName(browser);
+      capabilities.setPlatform(Platform.fromString(System.getProperty("platform", "win10")));
       wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
     }
-
 
     //можно убирать 60 - для быстрого прохождения теста, но если необходимо время на появление элемента - нужно будет вернуть
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
