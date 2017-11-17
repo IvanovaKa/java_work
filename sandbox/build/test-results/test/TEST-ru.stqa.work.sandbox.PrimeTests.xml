@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.work.sandbox.PrimeTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-17T13:04:30" hostname="eivanova-ws" time="0.008">
+  <properties/>
+  <testcase name="testNonPrime" classname="ru.stqa.work.sandbox.PrimeTests" time="0.007"/>
+  <testcase name="testPrime" classname="ru.stqa.work.sandbox.PrimeTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
