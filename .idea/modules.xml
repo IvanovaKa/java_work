@@ -5,7 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-web-test.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-web-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-web-test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-web-test_main.iml" group="addressbook-web-test" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-web-test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-web-test_test.iml" group="addressbook-web-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-sample.iml" filepath="$PROJECT_DIR$/.idea/modules/github-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-sample_main.iml" filepath="$PROJECT_DIR$/.idea/modules/github-sample_main.iml" group="github-sample" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-sample_test.iml" filepath="$PROJECT_DIR$/.idea/modules/github-sample_test.iml" group="github-sample" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_work-rest-sample_test.iml" filepath="$PROJECT_DIR$/.idea/modules/java_work-rest-sample_test.iml" group="rest-sample" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_work-soap-sample_main.iml" filepath="$PROJECT_DIR$/.idea/modules/java_work-soap-sample_main.iml" group="soap-sample" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_work-soap-sample_test.iml" filepath="$PROJECT_DIR$/.idea/modules/java_work-soap-sample_test.iml" group="soap-sample" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mantis-2-tests.iml" filepath="$PROJECT_DIR$/.idea/modules/mantis-2-tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mantis-2-tests_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mantis-2-tests_main.iml" group="mantis-2-tests" />
